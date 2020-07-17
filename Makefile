@@ -30,8 +30,7 @@ push: login
 	docker push $(TAG)
 
 generate:
-	GO111MODULE=on go run github.com/99designs/gqlgen
-	GO111MODULE=on go generate ./...
+	gqlgen generate
 
 build-local:
 	# go get ./...

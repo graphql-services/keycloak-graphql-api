@@ -5,31 +5,28 @@ package graph
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/graphql-services/id/graph/generated"
 	"github.com/graphql-services/id/graph/model"
 )
 
-func (r *entityResolver) FindUserByID(ctx context.Context, id string) (user *model.User, err error) {
-	fmt.Println("start resolver", id)
+func (r *entityResolver) FindUserByID(ctx context.Context, id string) (*model.User, error) {
 	kc := NewKeycloakAPI()
 	keycloakUser, err := kc.GetUser(ctx, id)
 	if err != nil {
-		return
+		return nil, err
 	}
 	if keycloakUser == nil {
-		return
+		return nil, nil
 	}
 
-	user = &model.User{
+	user := &model.User{
 		ID:         keycloakUser.ID,
 		Email:      keycloakUser.Email,
 		FamilyName: &keycloakUser.FirstName,
 		GivenName:  &keycloakUser.LastName,
 	}
-	fmt.Println("end resolver", id)
-	return
+	return user, nil
 }
 
 // Entity returns generated.EntityResolver implementation.

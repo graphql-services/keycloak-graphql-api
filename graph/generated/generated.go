@@ -213,7 +213,7 @@ var sources = []*ast.Source{
 # https://gqlgen.com/getting-started/
 
 type User @key(fields: "id") {
-  id: ID! @external
+  id: ID!
   email: String!
   # email_verified: Boolean!
   given_name: String
