@@ -1,5 +1,5 @@
-include .env
-export
+# include .env
+# export
 
 OWNER=graphql
 IMAGE_NAME=keycloak-graphql-api
