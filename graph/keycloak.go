@@ -92,7 +92,7 @@ func (api *KeycloakAPI) GetUser(ctx context.Context, id string) (user *KeycloakU
 	if err != nil {
 		return
 	}
-
+	fmt.Println("??", res.StatusCode)
 	if res.StatusCode == 404 {
 		return
 	}

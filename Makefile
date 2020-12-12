@@ -42,7 +42,10 @@ deploy-local:
 	mv app /usr/local/bin/${IMAGE_NAME}
 
 run:
-	GO111MODULE=on PORT=8080 go run server.go
+	GO111MODULE=on PORT=8080 go run main.go
+
+build-lambda-function:
+	GO111MODULE=on GOOS=linux go build -o main lambda/main.go && zip lambda.zip main && rm main
 
 # test:
 # 	DATABASE_URL=sqlite3://test.db $(IMAGE_NAME) server -p 8005
