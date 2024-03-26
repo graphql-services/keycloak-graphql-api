@@ -45,7 +45,7 @@ run:
 	GO111MODULE=on PORT=8080 go run main.go
 
 build-lambda-function:
-	GO111MODULE=on GOOS=linux go build -o main lambda/main.go && zip lambda.zip main && rm main
+	GO111MODULE=on GOOS=linux go build -o bootstrap lambda/main.go && zip lambda.zip bootstrap && rm bootstrap
 
 # test:
 # 	DATABASE_URL=sqlite3://test.db $(IMAGE_NAME) server -p 8005
